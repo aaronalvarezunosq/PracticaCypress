@@ -1,0 +1,22 @@
+{
+  "name": "practice_amazon",
+  "version": "1.0.0",
+  "description": "practice amazon project",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "test": "testing"
+  },
+  "keywords": [
+    "project",
+    "practice",
+    "amazon",
+    "cypress",
+    "scrapper"
+  ],
+  "author": "Aaron Alvarez",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.8.1"
+  }
+}
