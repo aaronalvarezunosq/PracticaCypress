@@ -1,4 +1,4 @@
-export class resultPage{
+export class ResultPage{
 
     clickFirstResult(){
     cy.get('[data-image-index="1"]').first().click() //this returns a list of items but the first element is the image of the first search result, and clicks on it
@@ -6,4 +6,4 @@ export class resultPage{
 
 }
 
-export const resultPage = new resultPage();
+export const resultPage = new ResultPage();

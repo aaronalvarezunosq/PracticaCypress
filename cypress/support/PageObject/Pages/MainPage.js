@@ -1,4 +1,4 @@
-export class homepage{
+export class MainPage{
     
     searchProduct(item){
         cy.get('#twotabsearchtextbox').type(item)
@@ -10,4 +10,4 @@ export class homepage{
     }
 }
 
-export const homepage = new homepage();
+export const mainPage = new MainPage();
