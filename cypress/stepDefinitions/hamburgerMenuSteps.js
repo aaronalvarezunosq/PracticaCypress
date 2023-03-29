@@ -12,6 +12,8 @@ cy.visit('www.amazon.com/');
 
 When('3-1 I click on the Left Menu ToDo',() => {
     mainPage.clickToDoMenu();
+    cy.get().within(cy.get('#hmenu-content > .hmenu-visible > li'))
+   //cy.get('//div[@id="hmenu-content"]//child::div[.= "buscar por departamento"]//parent::li//following-sibling::li//a[@class = "hmenu-item" and @data-menu-id < 10]')  selector ejemplo luis
 })
 
 Then('3-1 Assert that section Buscar por departamento has: Electronicos,Computadoras,Smart Home,Arte y Artesanias Visible' , () => {
