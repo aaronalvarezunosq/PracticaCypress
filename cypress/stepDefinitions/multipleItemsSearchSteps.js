@@ -7,7 +7,7 @@ const validators = require('../support/PageObject/testData/validationText.json')
 
 import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 
-Given('2-1 I navigate to amazon.com for each item ', () => {
+Given('2-1 I navigate to amazon.com for each item', () => {
 cy.visit('www.amazon.com/');
 })
 
