@@ -44,11 +44,24 @@ When('3-2 I click on the Left Menu ToDo',() => {
 })
 
 Then('3-2 Assert that section Programa Y Funcionalidades has: testingElement visible #this is expected to fail' , () => {
-    cy.get(selectors.locatorProgramas).then((selection) =>{
+    
+    /*
+    cy.get(selectors.locatorProgramas).then((selection) =>{ //This implementation uses a for loop and wrapper to validate each HTML element
         
         for(let i=0; i<ListaProgramaYFuncionalidades.tagsToFail.length;i++){
         cy.wrap(selection).contains(ListaProgramaYFuncionalidades.tagsToFail[i]).scrollIntoView().should('be.visible').screenshot({capture:"runner"})
             .log('validando que el elemento: '+ ListaProgramaYFuncionalidades.tagsToFail[i]+' esté en la lista');
     }
+    })*/
+    const listaget = []; //This achieves the same comparison as above but comparing the String of each section in an array
+    cy.get(selectors.locatorProgramas).each((selection) =>{
+            listaget.push(selection.text());
+
     })
+        .then(() =>{
+            for(let i=0;i<ListaProgramaYFuncionalidades.tagsToFail.length;i++){
+                expect(listaget).to.include(ListaProgramaYFuncionalidades.tagsToFail[i]);
+            }
+            })
+
     })
