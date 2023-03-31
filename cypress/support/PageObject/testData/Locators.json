@@ -1,3 +1,4 @@
 {
-    "Iphone14ProMax" : "locator structure here"
+    "locatorDepartamento"   : ".hmenu-visible > :nth-child(n+7):nth-child(-n+10) > .hmenu-item",
+    "locatorProgramas"      : ".hmenu-visible > :nth-child(n+15):nth-child(-n+18) > .hmenu-item"
 }

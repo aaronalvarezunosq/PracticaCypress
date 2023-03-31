@@ -18,8 +18,8 @@ When('test-1 i click on the ToDo menu',() => {
 })
 
 Then('I test my locator' , () => {
-    var buscarPorDepartamento = [];
-    let i=0
+    //let i=0
+    cy.get('.hmenu-visible > :nth-child(n+7):nth-child(-n+10) > .hmenu-item');
     //Este loop funciona pero es "fragil" ante cambios en la estructura del DOM
     /*
     for(i+5; i+5<9;i++){
@@ -27,11 +27,4 @@ Then('I test my locator' , () => {
         .should('contain',ListaBuscarPorDepartamento.tags[i].sectionName)
             .log('validando que el elemento: '+ ListaBuscarPorDepartamento.tags[i].sectionName+' esté en la lista');
     }*/
-
-    
-    for(i+5; i+5<9;i++){ //Este for llena un array con los elementos de la seccion?
-    cy.get('#hmenu-content > .hmenu-visible > li > a[data-menu-id='+String(i+5)+']').then((elemento) => {
-        buscarPorDepartamento.push(elemento);
-    }).log('el array tiene length: '+buscarPorDepartamento.length)
-    }
     })

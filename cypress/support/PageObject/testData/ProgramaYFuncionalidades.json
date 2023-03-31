@@ -1,8 +1,4 @@
 {   
-    "tags" :[
-    {"sectionName"  :   "Gift Cards"},
-    {"sectionName"  :   "Shop By Interest"},
-    {"sectionName"  :   "Amazon Live"},
-    {"sectionName"  :   "International Shopping"}
-    ]
+    "tags" :["Gift Cards","Shop By Interest","Amazon Live","International Shopping"],
+    "tagsToFail" :["Gift Cards","Shop By Interest","Amazon Live","International Shopping","testingElement"]
 }

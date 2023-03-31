@@ -4,7 +4,7 @@ import {mainPage} from "../support/PageObject/Pages/MainPage.js";
 import {resultPage} from "../support/PageObject/Pages/ResultPage.js"
 import {itemPage} from "../support/PageObject/Pages/ItemPage.js";
 const items = require('../support/PageObject/testData/Items.json');
-const locators = require('../support/PageObject/testData/locators.json');
+const locators = require('../support/PageObject/testData/Locators.json');
 const validators = require('../support/PageObject/testData/validationText.json');
 
 import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';

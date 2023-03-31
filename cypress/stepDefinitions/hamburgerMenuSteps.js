@@ -2,7 +2,8 @@
 
 import {mainPage} from "../support/PageObject/Pages/MainPage.js";
 const ListaBuscarPorDepartamento = require('../support/PageObject/testData/BuscarPorDepartamento.json');
-const ListaProgramaYFuncionalidades = require('../support/PageObject/testData/ProgramaYFuncionalidades');
+const ListaProgramaYFuncionalidades = require('../support/PageObject/testData/ProgramaYFuncionalidades.json');
+const selectors = require('../support/PageObject/testData/Locators.json');
 
 import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 
@@ -17,31 +18,37 @@ When('3-1 I click on the Left Menu ToDo',() => {
    //cy.get('//div[@id="hmenu-content"]//child::div[.= "buscar por departamento"]//parent::li//following-sibling::li//a[@class = "hmenu-item" and @data-menu-id < 10]')  selector ejemplo luis
 })
 
-Then('3-1 Assert that section Buscar por departamento has: Electronicos,Computadoras,Smart Home,Arte y Artesanias Visible' , () => {
-    let i=0;
-    //Este loop funciona pero es "fragil" ante cambios en la estructura del DOM
-    
-    for(i+5; i+5<9;i++){
-    cy.get('#hmenu-content > .hmenu-visible > li > a[data-menu-id='+String(i+5)+']')
-        .should('contain',ListaBuscarPorDepartamento.tags[i].sectionName)
-            .log('validando que el elemento: '+ ListaBuscarPorDepartamento.tags[i].sectionName+' esté en la lista');
-    }
-
-    for(let j in ListaProgramaYFuncionalidades.tags){ //Este for valida las secciones de Programa y Funcionalidades
+Then('3-1 Assert that section Buscar por departamento has: Electronicos,Computadoras,Smart Home,Arte y Artesanias Visible' , () => {    
+    cy.get(selectors.locatorDepartamento).then((selection) =>{
         
-        cy.get('#hmenu-content > .hmenu-visible > li > a')
-            .should('contain',ListaProgramaYFuncionalidades.tags[j].sectionName)
-                .log('Validando que el menu contenga: '+ ListaProgramaYFuncionalidades.tags[j].sectionName);;
-        } 
+        for(let i=0; i<ListaBuscarPorDepartamento.tags.length;i++){
+        cy.wrap(selection).should('contain',ListaBuscarPorDepartamento.tags[i])
+            .log('validando que el elemento: '+ ListaBuscarPorDepartamento.tags[i]+' esté en la lista');
+    }
+    })
+
+    cy.get(selectors.locatorProgramas).then((selection) =>{
+        
+        for(let i=0; i<ListaProgramaYFuncionalidades.tags.length;i++){
+        cy.wrap(selection).should('contain',ListaProgramaYFuncionalidades.tags[i])
+            .log('validando que el elemento: '+ ListaProgramaYFuncionalidades.tags[i]+' esté en la lista');
+    }
+    })
+
     })
 //End of first scenario for Hamburger menu
 
 //Start of second scenario of Hamburger menu cases - this is expected to fail
-/*
 When('3-2 I click on the Left Menu ToDo',() => {
     mainPage.clickToDoMenu();
 })
 
-Then('3-2 Assert that section Buscar por Departamento has: testingElement visible #this is expected to fail' , () => {
-    cy.get('#hmenu-content > .hmenu-visible > li > a').contains(ListaBuscarPorDepartamento.tags[4].sectionName).should('be.visible').log(''Validando que el menu contenga: '+ ListaBuscarPorDepartamento.tags[4].sectionName');
-    })*/
+Then('3-2 Assert that section Programa Y Funcionalidades has: testingElement visible #this is expected to fail' , () => {
+    cy.get(selectors.locatorProgramas).then((selection) =>{
+        
+        for(let i=0; i<ListaProgramaYFuncionalidades.tagsToFail.length;i++){
+        cy.wrap(selection).contains(ListaProgramaYFuncionalidades.tagsToFail[i]).scrollIntoView().should('be.visible').screenshot({capture:"runner"})
+            .log('validando que el elemento: '+ ListaProgramaYFuncionalidades.tagsToFail[i]+' esté en la lista');
+    }
+    })
+    })

@@ -1,8 +1,3 @@
 {   
-    "tags":[
-    {"sectionName"  :   "Electronics"},
-    {"sectionName"  :   "Computers"},
-    {"sectionName"  :   "Smart Home"},
-    {"sectionName"  :   "Arts & Crafts"}
-    ]
+    "tags" :["Electronics","Computers","Smart Home","Arts & Crafts"]
 }
